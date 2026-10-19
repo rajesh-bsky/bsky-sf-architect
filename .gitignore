@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+
+# Anything a session produces for a client stays in the client's project, never in this repo
+architect-output/
+.tmp/
+
+# Salesforce / org data: never commit
+.sf/
+.sfdx/
+*.log
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
