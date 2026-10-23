@@ -9,7 +9,7 @@ A private Claude Code plugin marketplace (`bsky-architects`) for BlueSky's Sales
 ## Quick start
 
 ```text
-/plugin marketplace add <owner>/bsky-sf-architect
+/plugin marketplace add rajesh-bsky/bsky-sf-architect
 /plugin install bsky-sf-architect@bsky-architects
 ```
 

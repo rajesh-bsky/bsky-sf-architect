@@ -29,7 +29,7 @@ You need [Claude Code](https://claude.com/claude-code). For org work, the [Sales
 This repository is **private**: you need access to it.
 
 ```text
-/plugin marketplace add <owner>/bsky-sf-architect
+/plugin marketplace add rajesh-bsky/bsky-sf-architect
 /plugin install bsky-sf-architect@bsky-architects
 ```
 
