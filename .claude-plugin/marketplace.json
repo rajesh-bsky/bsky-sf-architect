@@ -1,0 +1,14 @@
+{
+  "name": "bsky-architects",
+  "owner": {
+    "name": "BlueSky",
+    "email": "rajesh.y@bsky.co.za"
+  },
+  "plugins": [
+    {
+      "name": "bsky-sf-architect",
+      "source": "./bsky-sf-architect",
+      "description": "Salesforce Architects, Developers and Consultants: solution design, Well-Architected review, Apex/LWC/Flow standards, fflib patterns, a consultant toolkit and gated sf CLI delivery tooling."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "bsky-sf-architect",
+  "version": "0.1.0",
+  "description": "BlueSky Salesforce Architect: a toolkit for Salesforce Architects, Developers and Consultants. Solution design (architecture decision records, data model and integration patterns), design review against the Salesforce Well-Architected framework, developer standards (Apex, LWC, Flow, security, tests), fflib Apex Enterprise Patterns (domain, selector, service, unit of work, ApexMocks), a consultant toolkit (discovery, user stories, fit-gap, estimation, client write-ups) and gated sf CLI delivery tooling (validate before deploy, retrieve and diff, release notes). Advice and review are read-only; anything that changes an org needs the user's explicit go-ahead.",
+  "author": {
+    "name": "Rajesh",
+    "email": "rajesh.y@bsky.co.za"
+  },
+  "keywords": [
+    "apex",
+    "architect",
+    "consultant",
+    "developer",
+    "fflib",
+    "flow",
+    "lwc",
+    "salesforce",
+    "sfdx",
+    "well-architected"
+  ]
+}

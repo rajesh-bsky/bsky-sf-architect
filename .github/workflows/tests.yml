@@ -1,0 +1,57 @@
+name: tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Read-only: the tests never need to write to the repository.
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: tests (${{ matrix.os }}, python ${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # 3.9 is what macOS ships: it keeps the checks runnable on the oldest Python people will have
+          - { os: ubuntu-latest, python: "3.9" }
+          - { os: ubuntu-latest, python: "3.12" }
+    steps:
+      # Actions are pinned to a commit, not a tag, so a moved tag can't change what runs.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Run the tests
+        # No Salesforce org, no GitHub token and no network are needed.
+        run: python -W error::ResourceWarning -m unittest discover -s tests -v
+
+  version-bump:
+    name: version bump and changelog
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: A change to the plugin needs a version bump and a changelog entry
+        # The base branch name goes in through the environment, never spliced into the shell command.
+        env:
+          BASE: origin/${{ github.base_ref }}
+        run: python3 tests/check_version_bump.py "$BASE"
